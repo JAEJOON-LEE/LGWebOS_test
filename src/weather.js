@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-$.getJSON('http://api.openweathermap.org/data/2.5/forecast?q=daegu&APPID=b3f68cdf12579866f5a4b0f994d68def&units=metric'
+$.getJSON('http://api.openweathermap.org/data/2.5/forecast?q=daegu&APPID=43ac456a3dcea5add7b90430fbc1d610&units=metric'
 			,function(data){
         var $nowTemp = data.list[0].main.temp;
 		var $minTemp = data.list[0].main.temp_min;
