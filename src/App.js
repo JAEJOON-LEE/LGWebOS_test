@@ -3,6 +3,10 @@ import React from 'react';
 import Main from './main'
 import WebCam from './webcam';
 
+const cors = require('cors');
+
+app.use(cors());
+
 function App() { 
   return ( 
     <> 
