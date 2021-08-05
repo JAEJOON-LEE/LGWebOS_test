@@ -79,7 +79,16 @@ class WebCam extends Component{
             </span>
           );
             })}
+            <a href="#">
+              <div className="edit">
+                <img src="https://img.icons8.com/ios/192/000000/edit--v1.png" alt="" className="edit_img" />
+                <p>
+                  <span>Edit List</span>
+                </p>
+              </div>
+            </a>
           </div> 
+          
           <Link to = "/" >
           <div className="button2" style={{marginTop: '40%'}}> <span>Have a nice day!</span></div>
           </Link>

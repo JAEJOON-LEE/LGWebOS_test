@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@font-face {
+  font-family: "Gochi";
+  src: url("./Gochi.ttf");
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -156,7 +161,8 @@ p {
   line-height: 1;
 }
 .section__subtitle {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1%;
 }
 .section__controls {
   display: flex;
@@ -347,6 +353,20 @@ p {
   object-position: center center;
   object-fit: cover;
 }
+.edit {
+  display: flex;
+  align-items: center;
+  /* padding: 2rem; */
+}
+.edit_img {
+  width: 25px;
+  height: 25px;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  /* border-radius: 0.25rem; */
+  object-position: center center;
+  object-fit: cover;
+}
 .media__content {
   margin: 0;
 }
@@ -358,7 +378,7 @@ p {
 .user__name {
   display: block;
   font-size: 1.5rem;
-  font-weight: 200;
+  font-weight: 2000;
 }
 .user__img {
   width: 100px;
@@ -401,9 +421,9 @@ button:focus {
   box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
   padding: 30px 45px;
   display: grid;
-  grid-template-columns: 30px auto;
+  grid-template-columns: 100%;
   align-items: center;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: lighter;
   font-family: 'Montserrat', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
@@ -433,16 +453,18 @@ button:focus {
   height: 4px;
   width: 4px;
   top: 8px;
-  left: -25px;
+  left: -27px;
   border-radius: 50%;
 }
 #checklist input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   position: relative;
-  height: 15px;
-  width: 15px;
+  height: 2px;
+  width: 4px;
+  left: -20%;
   outline: none;
+  top:8px;
   border: 0;
   margin: 0 15px 0 0;
   cursor: pointer;
@@ -468,23 +490,29 @@ button:focus {
   left: 40%;
   transform-origin: left bottom;
 }
-#checklist input[type="checkbox"]:checked::before {
-  animation: check-01 0.4s ease forwards;
+#checklist input[type=checkbox]:checked::before {
+  -webkit-animation: check-01 0.4s ease forwards;
+          animation: check-01 0.4s ease forwards;
 }
-#checklist input[type="checkbox"]:checked::after {
-  animation: check-02 0.4s ease forwards;
+#checklist input[type=checkbox]:checked::after {
+  -webkit-animation: check-02 0.4s ease forwards;
+          animation: check-02 0.4s ease forwards;
 }
-#checklist input[type="checkbox"]:checked + label {
+#checklist input[type=checkbox]:checked + label {
   color: var(--disabled);
-  animation: move 0.3s ease 0.1s forwards;
+  -webkit-animation: move 0.3s ease 0.1s forwards;
+          animation: move 0.3s ease 0.1s forwards;
 }
-#checklist input[type="checkbox"]:checked + label::before {
+#checklist input[type=checkbox]:checked + label::before {
   background: var(--disabled);
-  animation: slice 0.4s ease forwards;
+  -webkit-animation: slice 0.4s ease forwards;
+          animation: slice 0.4s ease forwards;
 }
-#checklist input[type="checkbox"]:checked + label::after {
-  animation: firework 0.5s ease forwards 0.1s;
+#checklist input[type=checkbox]:checked + label::after {
+  -webkit-animation: firework 0.5s ease forwards 0.1s;
+          animation: firework 0.5s ease forwards 0.1s;
 }
+
 @keyframes move {
   50% {
       padding-left: 8px;
@@ -493,6 +521,26 @@ button:focus {
   100% {
       padding-right: 4px;
  }
+}
+@-webkit-keyframes move {
+  50% {
+    padding-left: 8px;
+    padding-right: 0px;
+  }
+  100% {
+    padding-right: 4px;
+  }
+}
+@-webkit-keyframes slice {
+  60% {
+    width: 100%;
+    left: 4px;
+  }
+  100% {
+    width: 100%;
+    left: -2px;
+    padding-left: 0;
+  }
 }
 @keyframes slice {
   60% {
@@ -527,6 +575,28 @@ button:focus {
       transform: rotate(45deg);
  }
 }
+@-webkit-keyframes check-01 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    transform: rotate(45deg);
+  }
+  100% {
+    width: 5px;
+    top: 8px;
+    transform: rotate(45deg);
+  }
+}
 @keyframes check-02 {
   0% {
       width: 4px;
@@ -549,6 +619,28 @@ button:focus {
       transform: rotate(-45deg);
  }
 }
+@-webkit-keyframes check-02 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+  100% {
+    width: 10px;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+}
 @keyframes firework {
   0% {
       opacity: 1;
@@ -561,6 +653,19 @@ button:focus {
       opacity: 0;
       box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0, 14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0, -14px -8px 0 0px #4f29f0;
  }
+}
+@-webkit-keyframes firework {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+  }
 }
 .button2 {
   padding-left: 10%;
@@ -583,6 +688,7 @@ button:focus {
   font-size: 32px;
   font-weight: semibold;
   color: #6f6cde;
+  font-family: "Gochi";
 }
 .button2:hover {
   opacity: 0.3;
@@ -598,12 +704,14 @@ button:focus {
   color: white;
   font-size: 80px;
   font-weight: lighter;
-  position: absolute; left: 50%; transform: translateX(-50%); 
-
+  position: absolute;left: 50%; transform: translateX(-50%); 
+  font-family: "Gochi";
+  top: 7%
 }
 .subtitle{
   position: absolute; left: 50%; transform: translateX(-50%); 
-  top: 20%;
+  top: 18%;
   color: '#ffffff';
-  font-size: 25px;
+  font-size: 23px;
+  font-family: "Gochi";
 }
