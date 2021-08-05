@@ -61,7 +61,7 @@ class WebCam extends Component{
           <div className="title">
             FOR {this.state.user_name}
           </div>
-          <div style={{position: 'absolute', top: '18%', color: '#ffffff', fontSize: '40px'}}>Please check your itemlist</div>
+          <div className="subtitle">Please check your itemlist</div>
           <div className="webcam">
             여기에 웹캠
           </div>
