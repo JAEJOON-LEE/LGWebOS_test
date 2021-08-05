@@ -152,8 +152,8 @@ class Main extends Component {
                   <img src="https://source.unsplash.com/300x300/?people" className="box__img" alt="" />
                 </a>
               </li> */}
-              <li className="boxgrid__item boxgrid__item--wide">
-                <a href="#" className="box box--images">
+              <li className="boxgrid__item boxgrid__item--wide2">
+                <a href="#" className="box box--time">
                   <p>NOW<br /></p><div className="text--large"><p className="clock">현재 시간</p></div><p />
                 </a>
               </li>

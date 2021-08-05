@@ -3,9 +3,7 @@ import  './clock';
 import './weather';
 import './advice';
 import { firestore } from './firebase';
-
-import './css/list.css';
-// import './list.css';
+import './css/style.css';
 import jQuery from 'jquery';
 import { Link } from 'react-router-dom' 
 window.$ = window.jQuery = jQuery;
