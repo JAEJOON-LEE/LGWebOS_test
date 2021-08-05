@@ -167,7 +167,7 @@ class Main extends Component {
                 {/* <Router> */}
                 <Link to = {"/webcam/" + this.state.name1} >
                 <a className="box box--cost">
-                  <p><span className="text--large">Make sure<br />you don't leave anything behind.</span></p>
+                  <p><span className="text--large2">Make sure<br />you don't leave anything behind.</span></p>
                 </a>
                 </Link>
                 {/* </Router> */}
