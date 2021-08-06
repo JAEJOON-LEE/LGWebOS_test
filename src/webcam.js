@@ -5,7 +5,9 @@ import './advice';
 import { firestore } from './firebase';
 import './css/style.css';
 import jQuery from 'jquery';
-import { Link } from 'react-router-dom' 
+import { Link } from 'react-router-dom'
+
+import './classifier';
 window.$ = window.jQuery = jQuery;
 
 class WebCam extends Component{
@@ -17,14 +19,15 @@ class WebCam extends Component{
             user_name : match.params.name , user_num : "",
             length : 0, items : []
           }
+        this.videoTag = React.createRef();
       }
 
     componentDidMount() {
         // this.state.user_name = this.props.loaction.state.name; /////// match값 가져와야됨 /////// 임시로
-        
+
             this.state.user_name === "Lee, Jaejoon"
             ? this.state.user_num = "user1"
-            : ( this.state.user_name === "Si, Minju" 
+            : ( this.state.user_name === "Si, Minju"
                 ? this.state.user_num = "user2"
                 : this.state.user_num = "user3"
             )
@@ -37,16 +40,14 @@ class WebCam extends Component{
             length : doc.data().items.length,
             items : doc.data().items
             })
-        })                                                           
-    } 
+        })
 
-    // printList() {
-    //     var forArray = [];
-    //     for (let i = 0; i < this.state.length; i++) {
-    //         forArray.push(<div>{this.state.items[i]}</div>);
-    //     }
-    //     return forArray;
-    // }
+        var constraints = { audio: false, video: true };
+        navigator.mediaDevices
+          .getUserMedia(constraints)
+          .then(stream => this.videoTag.current.srcObject = stream)
+          .catch(console.log);
+    }
 
 
     render(){
@@ -63,18 +64,21 @@ class WebCam extends Component{
           </div>
           <div className="subtitle">Please check your itemlist</div>
           <div className="webcam">
-            여기에 웹캠
+            <center>
+            <video id="webcam" ref={this.videoTag} width="650" height="350" autoPlay/>
+            <div id="console"></div>
+            </center>
           </div>
           <br />
           <br />
           <div id="checklist" style={{float: 'left', position: 'absolute', top: '50%', left: '45%', margin: '-25vh 0vh 0vh -50vh'}}>
-        
+
           {this.state.items.map((item, index) => {
             return (
             <span>
-            
-            <input id ={"0" + index} type ="checkbox" name="r" value={index+1}></input> 
-            <label for= {"0" +index}>{item}</label>
+
+            <input id ={index} type ="checkbox" name="r" value={index+1}></input>
+            <label for= {index}>{item}</label>
 
             </span>
           );
@@ -87,8 +91,8 @@ class WebCam extends Component{
                 </p>
               </div>
             </a>
-          </div> 
-          
+          </div>
+
           <Link to = "/" >
           <div className="button2" style={{marginTop: '40%'}}> <span>Have a nice day!</span></div>
           </Link>
