@@ -20,24 +20,24 @@ async function app() {
     const img = await webcam.capture();
     const result = await net.classify(img);
 
-    document.getElementById('console').innerText = `
-      prediction: ${result[0].className}\n
-      probability: ${result[0].probability}
-    `;
-    // Dispose the tensor to release the memory.
+    // document.getElementById('console').innerText = `
+    //   prediction: ${result[0].className}\n
+    //   probability: ${result[0].probability}
+    // `;
+    // // Dispose the tensor to release the memory.
 
-    for (var i=0; i<labels.length; i++){
-      // console.log(labels[i].innerText);
-      if (result[0].className.includes(labels[i].innerText.toLowerCase())) {
-        console.log("find object : " + labels[i].innerText + " -> " + result[0].className);
-        var findObject = document.getElementById(i.toString());
-        console.log(findObject.getAttribute("name") + ' - ' + findObject.checked);
-        if (findObject.checked==false){
-          findObject.checked = true;
-        }
-        break;
-      }
-    }
+    // for (var i=0; i<labels.length; i++){
+    //   // console.log(labels[i].innerText);
+    //   if (result[0].className.includes(labels[i].innerText.toLowerCase())) {
+    //     console.log("find object : " + labels[i].innerText + " -> " + result[0].className);
+    //     var findObject = document.getElementById(i.toString());
+    //     console.log(findObject.getAttribute("name") + ' - ' + findObject.checked);
+    //     if (findObject.checked==false){
+    //       findObject.checked = true;
+    //     }
+    //     break;
+    //   }
+    // }
 
     img.dispose();
 

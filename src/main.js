@@ -10,7 +10,7 @@ import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 window.$ = window.jQuery = jQuery;
 
 class Main extends Component {
-  
+
   state = {
     name1 : "", role1 : "", img1 : "",
     name2 : "", role2 : "", img2 : "",
@@ -57,11 +57,16 @@ class Main extends Component {
       $('#app').animate({scrollTop : offset.top}, 400);
   }
 
+  var constraints = { audio: false, video: false };
+  navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then(stream => this.videoTag.current.srcObject = stream)
+    .catch(console.log);
   };
 
   render(){
     return (
-      
+
       <div className="app">
       <header className="header">
         <div className="header__left">
@@ -81,7 +86,7 @@ class Main extends Component {
                   <strong>{this.state.name1}</strong><br />
                   {this.state.role1}
                 </p>
-                
+
               </div>
             </a>
           </li>
@@ -113,7 +118,7 @@ class Main extends Component {
                 <img src="https://img.icons8.com/ios/96/000000/add--v1.png" alt="" className="media__img" />
                 <p className="media__content">
                   <strong>Add members</strong><br />
-                  
+
                 </p>
               </div>
             </a>
@@ -232,7 +237,7 @@ class Main extends Component {
                 </a>
               </li>
               <li>
-                
+
               </li>
               <li className="boxgrid__item boxgrid__item--wide2">
                 <a href="#" className="box box--time">
@@ -246,7 +251,7 @@ class Main extends Component {
               </li>
               <li />
               <li className="boxgrid__item boxgrid__item--wide">
-              
+
                 <Link to = {"/webcam/" + this.state.name2} >
                 <a className="box box--cost">
                   <p><span className="text--large2">Make sure<br />you don't leave anything behind.</span></p>
@@ -259,7 +264,7 @@ class Main extends Component {
 
         {/* 3번째 */}
 
-        
+
         <article className="section" id="newyork" data-section>
           <header className="section__header" style={{backgroundImage: 'url("https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=2000")'}}>
             {/* <header className="section__subtitle">Thought of the day</header> */}
@@ -312,7 +317,7 @@ class Main extends Component {
               </li>
               <li />
               <li className="boxgrid__item boxgrid__item--wide">
-              
+
                 <Link to = {"/webcam/" + this.state.name3} >
                 <a className="box box--cost">
                   <p><span className="text--large2">Make sure<br />you don't leave anything behind.</span></p>
@@ -321,6 +326,10 @@ class Main extends Component {
               </li>
             </ul>
           </div>
+          <div>
+            <video id="webcam" ref={this.videoTag} width="650" height="350" autoPlay/>
+          </div>
+
         </article>
 
       </main>
